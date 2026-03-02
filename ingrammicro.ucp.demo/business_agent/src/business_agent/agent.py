@@ -51,6 +51,9 @@ def _create_error_response(message: str) -> dict:
 def search_shopping_catalog(tool_context: ToolContext, query: str) -> dict:
     """Search the product catalog for products that match the given query.
 
+    Uses scored keyword matching to surface the most relevant products.
+    Call this when the user searches for specific products by name, type, or feature.
+
     Args:
         tool_context: The tool context for the current request.
         query: Query for performing product search.
@@ -66,6 +69,31 @@ def search_shopping_catalog(tool_context: ToolContext, query: str) -> dict:
         logging.exception("There was an error searching the product catalog.")
         return _create_error_response(
             "Sorry, there was an error searching the product catalog, "
+            "please try again later."
+        )
+
+
+def list_all_products(tool_context: ToolContext) -> dict:
+    """List all available products in the catalog.
+
+    Call this when the user wants to browse, view, or see all products
+    without a specific search query (e.g., 'show me everything', 'what do you have',
+    'list all products', 'show me your catalog').
+
+    Args:
+        tool_context: The tool context for the current request.
+
+    Returns:
+        dict: Returns the response from the tool with all products.
+
+    """
+    try:
+        product_results = store.list_products()
+        return {"a2a.product_results": product_results.model_dump(mode="json")}
+    except Exception:
+        logging.exception("There was an error listing all products.")
+        return _create_error_response(
+            "Sorry, there was an error listing the product catalog, "
             "please try again later."
         )
 
@@ -427,13 +455,16 @@ root_agent = Agent(
     description="Agent to help with B2B IT solutions at Ingram Micro",
     instruction=(
         "You are a helpful B2B sales representative agent who can help business users with IT solutions at Ingram Micro"
-        " such as searching the catalog for server racks and network switches, add to checkout session,"
-        " complete checkout and handle order placed event. Given the user ask, plan ahead and"
-        " invoke the tools available to complete the user's ask. Always make"
-        " sure you have completed all aspects of the user's ask. If the user"
-        " says add to my list or remove from the list, add or remove from the"
-        " cart, add the product or remove the product from the checkout"
-        " session. If the user asks to add any items to the checkout session,"
+        " such as server racks, network switches, firewalls, UPS units, workstations, and software licenses."
+        " Given the user ask, plan ahead and invoke the tools available to complete the user's ask."
+        " Always make sure you have completed all aspects of the user's ask."
+        " If the user wants to browse, see, or list all available products (e.g., 'show me everything',"
+        " 'what products do you have', 'list all products', 'show me your catalog'),"
+        " use the list_all_products tool."
+        " If the user is searching for a specific product by name, type, or feature, use search_shopping_catalog."
+        " If the user says add to my list or remove from the list, add or remove from the"
+        " cart, add the product or remove the product from the checkout session."
+        " If the user asks to add any items to the checkout session,"
         " search for the products and then add the matching products to"
         " checkout session. If the user asks to replace products,"
         " use remove_from_checkout and add_to_checkout tools to replace the"
@@ -441,6 +472,7 @@ root_agent = Agent(
     ),
     tools=[
         search_shopping_catalog,
+        list_all_products,
         add_to_checkout,
         remove_from_checkout,
         update_checkout,

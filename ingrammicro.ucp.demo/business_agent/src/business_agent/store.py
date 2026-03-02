@@ -100,6 +100,13 @@ class RetailStore:
     def search_products(self, query: str) -> ProductResults:
         """Search the product catalog for products that match the given query.
 
+        Uses scored keyword matching:
+          - +3 for each keyword found in the product name
+          - +2 for each keyword found in the product description
+          - +1 for each keyword found in the brand name or any category name
+
+        Results are sorted by total score (highest first).
+
         Args:
             query (str): shopping query
 
@@ -107,25 +114,56 @@ class RetailStore:
             ProductResults: product items that match the criteria of the query
 
         """
-        # return existing products for now
         all_products = list(self._products.values())
+        keywords = [kw.strip() for kw in query.lower().split() if kw.strip()]
 
-        matching_products = {}
+        scored: dict[str, tuple[Product, int]] = {}
 
-        keywords = query.lower().split()
-        for keyword in keywords:
-            for product in all_products:
-                if product.product_id not in matching_products and (
-                    keyword in product.name.lower()
-                    or (product.description and keyword in product.description.lower())
-                ):
-                    matching_products[product.product_id] = product
+        for product in all_products:
+            score = 0
+            name_lower = product.name.lower()
+            desc_lower = (product.description or "").lower()
 
-        product_list = list(matching_products.values())
-        if not product_list:
+            # Gather extra searchable text from brand and categories
+            brand_lower = ""
+            if product.brand and product.brand.name:
+                brand_lower = product.brand.name.lower()
+
+            # categories are stored as extra JSON via extra="allow"
+            categories = []
+            extra = product.model_extra or {}
+            for cat in extra.get("categories", []):
+                if isinstance(cat, dict) and cat.get("name"):
+                    categories.append(cat["name"].lower())
+
+            for keyword in keywords:
+                if keyword in name_lower:
+                    score += 3
+                if keyword in desc_lower:
+                    score += 2
+                if keyword in brand_lower or any(keyword in c for c in categories):
+                    score += 1
+
+            if score > 0:
+                scored[product.product_id] = (product, score)
+
+        if not scored:
             return ProductResults(results=[], content="No products found")
 
-        return ProductResults(results=product_list)
+        sorted_products = [
+            p for p, _ in sorted(scored.values(), key=lambda x: x[1], reverse=True)
+        ]
+        return ProductResults(results=sorted_products)
+
+    def list_products(self) -> ProductResults:
+        """Return all products in the catalog.
+
+        Returns:
+            ProductResults: all available products
+
+        """
+        all_products = list(self._products.values())
+        return ProductResults(results=all_products)
 
     def get_product(self, product_id: str) -> Product | None:
         """Retrieve a product by its SKU.
@@ -158,15 +196,14 @@ class RetailStore:
 
         image_url = None
 
-        if isinstance(product.image, list):
-            if isinstance(product.image, str):
-                image_url = product.image
-            elif isinstance(product.image, list) and product.image:
-                first_image = product.image[0]
-                if isinstance(first_image, str):
-                    image_url = first_image
-                elif isinstance(first_image, ImageObject):
-                    image_url = first_image.url
+        if isinstance(product.image, str):
+            image_url = product.image
+        elif isinstance(product.image, list) and product.image:
+            first_image = product.image[0]
+            if isinstance(first_image, str):
+                image_url = first_image
+            elif isinstance(first_image, ImageObject):
+                image_url = first_image.url
 
         if image_url and image_url.startswith("/"):
             image_url = f"http://127.0.0.1:3000{image_url}"
