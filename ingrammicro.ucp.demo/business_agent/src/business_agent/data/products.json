@@ -1,0 +1,248 @@
+[
+  {
+    "id": "SERVER-101",
+    "productID": "SERVER-101",
+    "sku": "SERVER-101",
+    "categories": [
+      {
+        "id": "IT Solutions",
+        "name": "IT Solutions"
+      },
+      {
+        "id": "Hardware",
+        "name": "Hardware"
+      }
+    ],
+    "brand": {
+      "id": "Ingram",
+      "name": "Ingram Micro"
+    },
+    "description": "Enterprise-grade 42U Server Rack for data centers.",
+    "energy_efficiency": {
+      "id": "ENERGY_STAR_5",
+      "rating_score": 5.0,
+      "rating_icon": "https://example.com/energy-star-5.png"
+    },
+    "image": [
+      "/images/server.png"
+    ],
+    "name": "Enterprise 42U Server Rack",
+    "gtin13": "1234567890123",
+    "offers": {
+      "itemCondition": "https://schema.org/NewCondition",
+      "priceCurrency": "USD",
+      "price": "1250.00",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "id": "IngramMicro",
+        "name": "Ingram Micro"
+      }
+    },
+    "color": "Black",
+    "tax_id": "TAX-12345"
+  },
+  {
+    "id": "SWITCH-202",
+    "productID": "SWITCH-202",
+    "sku": "SWITCH-202",
+    "categories": [
+      {
+        "id": "IT Solutions",
+        "name": "IT Solutions"
+      },
+      {
+        "id": "Networking",
+        "name": "Networking"
+      }
+    ],
+    "brand": {
+      "id": "Ingram",
+      "name": "Ingram Micro"
+    },
+    "description": "Commercial 48-port Managed Gigabit Network Switch for enterprise networking.",
+    "energy_efficiency": {
+      "id": "ENERGY_STAR_4",
+      "rating_score": 4.5,
+      "rating_icon": "https://example.com/energy-star-4.png"
+    },
+    "image": [
+      "/images/switch.png"
+    ],
+    "name": "Commercial 48-port Network Switch",
+    "gtin13": "2345678901234",
+    "offers": {
+      "itemCondition": "https://schema.org/NewCondition",
+      "priceCurrency": "USD",
+      "price": "890.00",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "id": "IngramMicro",
+        "name": "Ingram Micro"
+      }
+    },
+    "color": "Gray",
+    "tax_id": "TAX-12345"
+  },
+  {
+    "id": "LICENSE-303",
+    "productID": "LICENSE-303",
+    "sku": "LICENSE-303",
+    "categories": [
+      {
+        "id": "IT Solutions",
+        "name": "IT Solutions"
+      },
+      {
+        "id": "Software",
+        "name": "Software"
+      }
+    ],
+    "brand": {
+      "id": "Ingram",
+      "name": "Ingram Micro"
+    },
+    "description": "Bulk Enterprise Cloud Storage License (100TB) for secure data backup.",
+    "image": [
+      "/images/license.png"
+    ],
+    "name": "Enterprise Cloud Storage License - 100TB",
+    "gtin13": "3456789012345",
+    "offers": {
+      "itemCondition": "https://schema.org/NewCondition",
+      "priceCurrency": "USD",
+      "price": "5000.00",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "id": "IngramMicro",
+        "name": "Ingram Micro"
+      }
+    },
+    "tax_id": "TAX-12345"
+  },
+  {
+    "id": "WORKSPACE-404",
+    "productID": "WORKSPACE-404",
+    "sku": "WORKSPACE-404",
+    "categories": [
+      {
+        "id": "IT Solutions",
+        "name": "IT Solutions"
+      },
+      {
+        "id": "Hardware",
+        "name": "Hardware"
+      }
+    ],
+    "brand": {
+      "id": "Ingram",
+      "name": "Ingram Micro"
+    },
+    "description": "Business Workstation Fleet Bundle (Includes 5 High-Performance Desktops and Monitors).",
+    "energy_efficiency": {
+      "id": "ENERGY_STAR_4",
+      "rating_score": 4.0,
+      "rating_icon": "https://example.com/energy-star-4.png"
+    },
+    "image": [
+      "/images/workspace.png"
+    ],
+    "name": "Business Workstation Fleet Bundle",
+    "gtin13": "4567890123456",
+    "offers": {
+      "itemCondition": "https://schema.org/NewCondition",
+      "priceCurrency": "USD",
+      "price": "7500.00",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "id": "IngramMicro",
+        "name": "Ingram Micro"
+      }
+    },
+    "color": "Silver",
+    "tax_id": "TAX-12345"
+  },
+  {
+    "id": "FIREWALL-505",
+    "productID": "FIREWALL-505",
+    "sku": "FIREWALL-505",
+    "categories": [
+      {
+        "id": "IT Solutions",
+        "name": "IT Solutions"
+      },
+      {
+        "id": "Security",
+        "name": "Security"
+      }
+    ],
+    "brand": {
+      "id": "Ingram",
+      "name": "Ingram Micro"
+    },
+    "description": "Next-Gen Enterprise Firewall Appliance for network security and threat prevention.",
+    "energy_efficiency": {
+      "id": "ENERGY_STAR_5",
+      "rating_score": 5.0,
+      "rating_icon": "https://example.com/energy-star-5.png"
+    },
+    "image": [
+      "/images/firewall.png"
+    ],
+    "name": "Enterprise Firewall Appliance",
+    "gtin13": "5678901234567",
+    "offers": {
+      "itemCondition": "https://schema.org/NewCondition",
+      "priceCurrency": "USD",
+      "price": "3200.00",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "id": "IngramMicro",
+        "name": "Ingram Micro"
+      }
+    },
+    "color": "Silver",
+    "tax_id": "TAX-12345"
+  },
+  {
+    "id": "UPS-606",
+    "productID": "UPS-606",
+    "sku": "UPS-606",
+    "categories": [
+      {
+        "id": "IT Solutions",
+        "name": "IT Solutions"
+      },
+      {
+        "id": "Power",
+        "name": "Power"
+      }
+    ],
+    "brand": {
+      "id": "Ingram",
+      "name": "Ingram Micro"
+    },
+    "description": "Heavy-duty 3000VA Rackmount Uninterruptible Power Supply (UPS) battery backup.",
+    "energy_efficiency": {
+      "id": "ENERGY_STAR_4",
+      "rating_score": 4.5,
+      "rating_icon": "https://example.com/energy-star-4.png"
+    },
+    "image": [
+      "/images/ups.png"
+    ],
+    "name": "3000VA Rackmount UPS",
+    "gtin13": "6789012345678",
+    "offers": {
+      "itemCondition": "https://schema.org/NewCondition",
+      "priceCurrency": "USD",
+      "price": "1500.00",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "id": "IngramMicro",
+        "name": "Ingram Micro"
+      }
+    },
+    "color": "Black",
+    "tax_id": "TAX-12345"
+  }
+]

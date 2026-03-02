@@ -1,0 +1,27 @@
+INFO:     Started server process [14676]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://localhost:10999 (Press CTRL+C to quit)
+INFO:httpx:HTTP Request: GET http://127.0.0.1:3000/profile/agent_profile.json "HTTP/1.1 200 OK"
+INFO:google_genai._api_client:The project/location from the environment variables will take precedence over the API key from the environment variables.
+INFO:google_adk.google.adk.models.google_llm:Sending out request, model: gemini-2.5-flash, backend: GoogleLLMVariant.VERTEX_AI, stream: False
+INFO:httpx:HTTP Request: POST https://us-central1-aiplatform.googleapis.com/v1beta1/projects/gcp-learn-486104/locations/us-central1/publishers/google/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+INFO:google_adk.google.adk.models.google_llm:Response received from the model.
+WARNING:google_genai.types:Warning: there are non-text parts in the response: ['function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
+C:\Users\sharm\OneDrive\Desktop\ucp\ingrammicro.ucp.demo\business_agent\.venv\Lib\site-packages\google\adk\flows\llm_flows\base_llm_flow.py:449: UserWarning: [EXPERIMENTAL] feature FeatureName.PROGRESSIVE_SSE_STREAMING is enabled.
+  async for event in agen:
+ERROR:root:There was an error searching the product catalog.
+Traceback (most recent call last):
+  File "C:\Users\sharm\OneDrive\Desktop\ucp\ingrammicro.ucp.demo\business_agent\src\business_agent\agent.py", line 63, in search_shopping_catalog
+    product_results = store.search_products(query)
+  File "C:\Users\sharm\OneDrive\Desktop\ucp\ingrammicro.ucp.demo\business_agent\src\business_agent\store.py", line 120, in search_products
+    or (product.category and keyword in product.category.lower())
+        ^^^^^^^^^^^^^^^^
+  File "C:\Users\sharm\OneDrive\Desktop\ucp\ingrammicro.ucp.demo\business_agent\.venv\Lib\site-packages\pydantic\main.py", line 1026, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+AttributeError: 'Product' object has no attribute 'category'
+INFO:google_genai._api_client:The project/location from the environment variables will take precedence over the API key from the environment variables.
+INFO:google_adk.google.adk.models.google_llm:Sending out request, model: gemini-2.5-flash, backend: GoogleLLMVariant.VERTEX_AI, stream: False
+INFO:httpx:HTTP Request: POST https://us-central1-aiplatform.googleapis.com/v1beta1/projects/gcp-learn-486104/locations/us-central1/publishers/google/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+INFO:google_adk.google.adk.models.google_llm:Response received from the model.
+INFO:     ::1:57651 - "POST / HTTP/1.1" 200 OK
