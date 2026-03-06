@@ -285,7 +285,7 @@ function App() {
         "X-A2A-Extensions":
           "https://ucp.dev/specification/reference?v=2026-01-11",
         "UCP-Agent":
-          'profile="http://127.0.0.1:3000/profile/agent_profile.json"',
+          `profile="${window.location.origin}/profile/agent_profile.json"`,
       };
 
       const response = await fetch("/api", {
