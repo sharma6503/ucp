@@ -43,8 +43,8 @@
     "text/plain",
     "application/json"
   ],
-  "description": "Ingram Micro B2B Solutions Agent",
-  "name": "Ingram Micro B2B Solutions",
+  "description": "Xvantage Platform Agent",
+  "name": "Xvantage Platform Agent",
   "preferredTransport": "JSONRPC",
   "protocolVersion": "0.3.0",
   "provider": {

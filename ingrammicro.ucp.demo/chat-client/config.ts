@@ -39,6 +39,6 @@ export const appConfig = new AppProperties(
   "Xvantage Platform Agent",
   "Your personal B2B sales representative.",
   "/images/logo.jpg",
-  "Hello, I am your Ingram Micro Agent. What IT solutions can I help you find?",
+  "Hello, I am your Xvantage Platform Agent. What IT solutions can I help you find?",
   "Ingram Micro Xvantage Portal",
 );
